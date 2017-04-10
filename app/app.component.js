@@ -10,13 +10,9 @@ let AppComponent = class AppComponent {
 };
 AppComponent = __decorate([
     core_1.Component({
-        selector: "my-app",
-        template: `
-        <h1>ZUP Test Application</h1>
-
-        <hr>
-        <shots-list></shots-list>
-    `
+        moduleId: module.id,
+        selector: 'my-app',
+        templateUrl: 'app.component.html'
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

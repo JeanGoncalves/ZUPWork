@@ -8,5 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class ShotsListComponent implements OnInit {
     constructor() { }
 
-    ngOnInit() { }
+    ngOnInit() {
+    }
+
+    getListClass(): {} {
+        return {
+            'row': true,
+            'col-sm-4': true
+        };
+    }
 }

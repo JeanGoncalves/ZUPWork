@@ -11,7 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 const core_1 = require("@angular/core");
 let ShotsListComponent = class ShotsListComponent {
     constructor() { }
-    ngOnInit() { }
+    ngOnInit() {
+    }
+    getListClass() {
+        return {
+            'row': true,
+            'col-sm-4': true
+        };
+    }
 };
 ShotsListComponent = __decorate([
     core_1.Component({
