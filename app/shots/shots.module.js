@@ -6,18 +6,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 const core_1 = require("@angular/core");
-let AppComponent = class AppComponent {
+const shots_list_component_1 = require("./shots-list.component");
+let ShotsModule = class ShotsModule {
 };
-AppComponent = __decorate([
-    core_1.Component({
-        selector: "my-app",
-        template: `
-        <h1>ZUP Test Application</h1>
-
-        <hr>
-        <shots-list></shots-list>
-    `
+ShotsModule = __decorate([
+    core_1.NgModule({
+        declarations: [
+            shots_list_component_1.ShotsListComponent
+        ],
+        exports: [
+            shots_list_component_1.ShotsListComponent
+        ]
     })
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+], ShotsModule);
+exports.ShotsModule = ShotsModule;
+//# sourceMappingURL=shots.module.js.map
