@@ -9,12 +9,14 @@ const core_1 = require("@angular/core");
 const platform_browser_1 = require("@angular/platform-browser");
 const http_1 = require("@angular/http");
 const app_component_1 = require("./app.component");
+const app_routing_module_1 = require("./app-routing.module");
 const shots_module_1 = require("./shots/shots.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     core_1.NgModule({
         imports: [
+            app_routing_module_1.AppRoutingModule,
             platform_browser_1.BrowserModule,
             http_1.HttpModule,
             shots_module_1.ShotsModule
