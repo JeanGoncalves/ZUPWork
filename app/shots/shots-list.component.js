@@ -31,8 +31,7 @@ ShotsListComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         selector: 'shots-list',
-        templateUrl: 'shots-list.component.html',
-        outputs: ['shots']
+        templateUrl: 'shots-list.component.html'
     }),
     __metadata("design:paramtypes", [shot_service_1.ShotService])
 ], ShotsListComponent);

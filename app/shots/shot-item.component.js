@@ -13,6 +13,10 @@ let ShotItemComponent = class ShotItemComponent {
     constructor() { }
     ngOnInit() { }
 };
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Object)
+], ShotItemComponent.prototype, "shotItem", void 0);
 ShotItemComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
