@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class ShotService {
 
-    private shotUrl: string = 'https://api.dribbble.com/v1/shots';
+    private dribbbleUrl = 'https://api.dribbble.com/v1/';
     private headers: Headers = new Headers({
         'Authorization': 'Bearer 5d5a565f99a7b7ebba36b503c53f529c034accecaec6881fbb7683a53bf61d71'
     });
@@ -16,7 +16,14 @@ export class ShotService {
     ) {}
     
     findAll(): Promise<any> {
-        return this.http.get(this.shotUrl,{headers: this.headers})
+        return this.http.get(this.dribbbleUrl + 'shots',{headers: this.headers})
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.handleError);
+    }
+
+    find(input: string): Promise<any> {
+        return this.http.get(this.dribbbleUrl + 'shots', {headers: this.headers})
             .toPromise()
             .then(response => response.json())
             .catch(this.handleError);

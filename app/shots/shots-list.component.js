@@ -13,6 +13,12 @@ const shot_service_1 = require("./shot.service");
 let ShotsListComponent = class ShotsListComponent {
     constructor(shotService) {
         this.shotService = shotService;
+        this.find = '';
+        this.columnClass = {
+            'column': true,
+            'is-one-quarter': true,
+            'is-one-third': false
+        };
     }
     ngOnInit() {
         this.shotService.findAll()
@@ -25,6 +31,24 @@ let ShotsListComponent = class ShotsListComponent {
             'row': true,
             'col-sm-4': true
         };
+    }
+    search(input) {
+        this.find = input;
+        this.shots = {};
+        this.shotService.find(input)
+            .then(shots => {
+            this.shots = shots;
+        });
+    }
+    changeSize(size) {
+        if (size) {
+            this.columnClass['is-one-quarter'] = false;
+            this.columnClass['is-one-third'] = true;
+        }
+        else {
+            this.columnClass['is-one-quarter'] = true;
+            this.columnClass['is-one-third'] = false;
+        }
     }
 };
 ShotsListComponent = __decorate([
