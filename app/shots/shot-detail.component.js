@@ -9,9 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require("@angular/core");
+const router_1 = require("@angular/router");
+const common_1 = require("@angular/common");
+const shot_service_1 = require("./shot.service");
 let ShotDetailComponent = class ShotDetailComponent {
-    constructor() { }
-    ngOnInit() { }
+    constructor(shotService, route, location) {
+        this.shotService = shotService;
+        this.route = route;
+        this.location = location;
+    }
+    ngOnInit() {
+        this.route.params.forEach((params) => {
+            let id = +params['id'];
+            this.shotService.getShot(id)
+                .then(response => {
+                this.shot = response;
+                console.log(response);
+            });
+        });
+    }
 };
 ShotDetailComponent = __decorate([
     core_1.Component({
@@ -19,7 +35,9 @@ ShotDetailComponent = __decorate([
         selector: 'shot-detail',
         templateUrl: './shot-detail.component.html'
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [shot_service_1.ShotService,
+        router_1.ActivatedRoute,
+        common_1.Location])
 ], ShotDetailComponent);
 exports.ShotDetailComponent = ShotDetailComponent;
 //# sourceMappingURL=shot-detail.component.js.map

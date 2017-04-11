@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from "@angular/router";
+import { Location } from '@angular/common';
+
+import { ShotService } from "./shot.service";
 
 @Component({
     moduleId: module.id,
@@ -6,7 +10,27 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './shot-detail.component.html'
 })
 export class ShotDetailComponent implements OnInit {
-    constructor() { }
 
-    ngOnInit() { }
+    shot: {};
+    
+    constructor(
+        private shotService: ShotService,
+        private route: ActivatedRoute,
+        private location: Location
+    ) { }
+
+    ngOnInit(): void {
+
+        this.route.params.forEach((params: Params) => {
+            let id: number = +params['id'];
+
+            this.shotService.getShot(id)
+                .then(response => {
+                    this.shot = response;
+                    console.log(response);
+                });
+
+        })
+        
+    }
 }

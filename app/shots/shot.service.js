@@ -14,19 +14,25 @@ require("rxjs/add/operator/toPromise");
 let ShotService = class ShotService {
     constructor(http) {
         this.http = http;
-        this.dribbbleUrl = 'https://api.dribbble.com/v1/';
+        this.dribbbleUrl = 'https://api.dribbble.com/v1/shots/';
         this.headers = new http_1.Headers({
             'Authorization': 'Bearer 5d5a565f99a7b7ebba36b503c53f529c034accecaec6881fbb7683a53bf61d71'
         });
     }
     findAll() {
-        return this.http.get(this.dribbbleUrl + 'shots', { headers: this.headers })
+        return this.http.get(this.dribbbleUrl, { headers: this.headers })
             .toPromise()
             .then(response => response.json())
             .catch(this.handleError);
     }
     find(input) {
-        return this.http.get(this.dribbbleUrl + 'shots', { headers: this.headers })
+        return this.http.get(this.dribbbleUrl, { headers: this.headers })
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.handleError);
+    }
+    getShot(id) {
+        return this.http.get(this.dribbbleUrl + id, { headers: this.headers })
             .toPromise()
             .then(response => response.json())
             .catch(this.handleError);
