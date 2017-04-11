@@ -1,14 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ShotService } from "./shot.service";
+
 @Component({
     moduleId: module.id,
     selector: 'shots-list',
-    templateUrl: 'shots-list.component.html'
+    templateUrl: 'shots-list.component.html',
+    outputs: ['shots']
 })
 export class ShotsListComponent implements OnInit {
-    constructor() { }
+
+    shots: {};
+
+    constructor(
+        private shotService: ShotService
+    ) { }
 
     ngOnInit() {
+        this.shotService.findAll()
+            .then(shots => {
+                this.shots = shots;
+            });
     }
 
     getListClass(): {} {

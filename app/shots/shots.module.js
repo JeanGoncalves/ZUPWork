@@ -6,20 +6,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 const core_1 = require("@angular/core");
+const common_1 = require("@angular/common");
 const forms_1 = require("@angular/forms");
 const shots_list_component_1 = require("./shots-list.component");
+const shot_item_component_1 = require("./shot-item.component");
+const shot_service_1 = require("./shot.service");
 let ShotsModule = class ShotsModule {
 };
 ShotsModule = __decorate([
     core_1.NgModule({
         imports: [
+            common_1.CommonModule,
             forms_1.FormsModule
         ],
         declarations: [
-            shots_list_component_1.ShotsListComponent
+            shots_list_component_1.ShotsListComponent,
+            shot_item_component_1.ShotItemComponent
         ],
         exports: [
-            shots_list_component_1.ShotsListComponent
+            shots_list_component_1.ShotsListComponent,
+            shot_item_component_1.ShotItemComponent
+        ],
+        providers: [
+            shot_service_1.ShotService
         ]
     })
 ], ShotsModule);

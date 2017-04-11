@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 const core_1 = require("@angular/core");
 const platform_browser_1 = require("@angular/platform-browser");
+const http_1 = require("@angular/http");
 const app_component_1 = require("./app.component");
 const shots_module_1 = require("./shots/shots.module");
 let AppModule = class AppModule {
@@ -15,6 +16,7 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [
             platform_browser_1.BrowserModule,
+            http_1.HttpModule,
             shots_module_1.ShotsModule
         ],
         declarations: [app_component_1.AppComponent],

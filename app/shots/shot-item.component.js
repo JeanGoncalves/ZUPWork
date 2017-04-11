@@ -9,32 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require("@angular/core");
-const shot_service_1 = require("./shot.service");
-let ShotsListComponent = class ShotsListComponent {
-    constructor(shotService) {
-        this.shotService = shotService;
-    }
-    ngOnInit() {
-        this.shotService.findAll()
-            .then(shots => {
-            this.shots = shots;
-        });
-    }
-    getListClass() {
-        return {
-            'row': true,
-            'col-sm-4': true
-        };
-    }
+let ShotItemComponent = class ShotItemComponent {
+    constructor() { }
+    ngOnInit() { }
 };
-ShotsListComponent = __decorate([
+ShotItemComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        selector: 'shots-list',
-        templateUrl: 'shots-list.component.html',
-        outputs: ['shots']
+        selector: 'shot-item',
+        templateUrl: './shot-item.component.html'
     }),
-    __metadata("design:paramtypes", [shot_service_1.ShotService])
-], ShotsListComponent);
-exports.ShotsListComponent = ShotsListComponent;
-//# sourceMappingURL=shots-list.component.js.map
+    __metadata("design:paramtypes", [])
+], ShotItemComponent);
+exports.ShotItemComponent = ShotItemComponent;
+//# sourceMappingURL=shot-item.component.js.map

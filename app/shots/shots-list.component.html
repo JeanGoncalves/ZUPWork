@@ -1,5 +1,50 @@
 <div class="container">
 
-    <label>Lista de shots</label>
+    <nav class="nav">
+      <div class="container">
+        <div class="nav-left">
+        </div>
+        <span class="nav-toggle">
+        </span>
+        <div class="nav-right nav-menu">
+          <div class="field has-addons">
+            <p class="control">
+              <input class="input" type="text" placeholder="Find a repository">
+            </p>
+            <p class="control">
+              <a class="button is-info">
+                Search
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="columns is-multiline">
+        <div class="column is-one-quarter" *ngFor="let shot of shots">
+            <div class="card"  style="width: 10rem;">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                    <img [src]="shot.images.hidpi" alt="Image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <nav class="level">
+                        <div class="level-left">
+                            <small>{{ shot.title }}</small>
+                        </div>
+                        <div class="level-right">
+                            <p>
+                                <a class="icon">
+                                    <i class="fa fa-thumbs-up"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
