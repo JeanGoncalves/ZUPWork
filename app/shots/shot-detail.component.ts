@@ -21,7 +21,7 @@ export class ShotDetailComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.shot = new Shot('', '', {}, 0, 0, '', {}, 0);
+        this.shot = new Shot(0, '', '', {}, {}, {}, 0, 0, 0);
 
         this.route.params.forEach((params: Params) => {
             let id: number = +params['id'];
@@ -29,7 +29,6 @@ export class ShotDetailComponent implements OnInit {
             this.shotService.getShot(id)
                 .then((shot: Shot) => {
                     this.shot = shot;
-                    console.log(shot);
                 });
 
         })

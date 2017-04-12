@@ -10,7 +10,7 @@ import { ShotItemComponent } from "./shot-item.component";
 })
 export class ShotsListComponent implements OnInit {
 
-    shots: Object;
+    shots: {};
     find: string = '';
     page: number = 1;
     btnMoreClass: Object = {

@@ -6,9 +6,9 @@ export class Shot {
         public title: string,
         public description: string,
 
-        public images: Object,
-        public user: Object,
-        public tags: Object,
+        public images: {},
+        public user: {},
+        public tags: {},
 
         public likes_count: number,
         public view_count: number,

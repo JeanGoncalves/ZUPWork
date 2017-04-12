@@ -83,7 +83,7 @@
                         </td>
                         <td align="right">{{shot.buckets_count}}</td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="shot.tags.length > 0">
                         <td colspan="2">
                             <nav class="level is-mobile">
                                 <div class="level-left">

@@ -8,7 +8,7 @@ import { Location } from '@angular/common';
 })
 export class NotFoundComponent implements OnInit {
     constructor(
-        private location: Location;
+        private location: Location
     ) { }
 
     ngOnInit() { }

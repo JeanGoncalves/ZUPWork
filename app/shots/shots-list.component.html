@@ -1,15 +1,8 @@
 <div class="container">
-
-    <nav class="nav">
-      <div class="container">
-        <div class="nav-left">
-        </div>
-        <span class="nav-toggle">
-        </span>
-        <div class="nav-right nav-menu">
-
-          <!--Buttons-->
-          <div class="field has-addons">
+  
+    <div class="field is-horizontal">
+      <div class="field-body">
+        <div class="field has-addons has-addons-left">
             <p class="control">
               <a class="button" (click)="changeSize(false)">
                 <span class="icon is-small" name="btnSmall">
@@ -24,29 +17,18 @@
                 </span>
               </a>
             </p>
-          </div>
-          
-          <!--Search-->
-          <div class="field has-addons">
-            <p class="control">
-              <input class="input" type="text" name="search" #searchInput placeholder="Buscar shot...">
-            </p>
-            <p class="control">
-              <a class="button is-info" (click)="search(searchInput.value)">
-                Buscar
-              </a>
-            </p>
-          </div>
+        </div>
+        <div class="field has-addons has-addons-right">
+          <p class="control has-icon">
+            <input class="input" type="text">
+            <span class="icon is-small">
+              <i class="fa fa-search"></i>
+            </span>
+          </p>
         </div>
       </div>
-    </nav>
-
-    <div class="container" *ngIf="find !== ''">
-      <div class="notification">
-        Resultado da busca por <strong>"{{ find }}"</strong>
-      </div>
     </div>
-
+  
     <div class="columns is-multiline">
         <div [ngClass]="columnClass" *ngFor="let shot of shots">
             <a [routerLink]="['/shots/', shot.id]">
@@ -54,7 +36,7 @@
             </a>
         </div>
     </div>
-
+    
     <section class="section">
       <button [ngClass]="btnMoreClass" (click)="getMore()">
         Carregar mais

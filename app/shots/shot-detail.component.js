@@ -20,13 +20,12 @@ let ShotDetailComponent = class ShotDetailComponent {
         this.location = location;
     }
     ngOnInit() {
-        this.shot = new shot_model_1.Shot('', '', {}, 0, 0, '', {}, 0);
+        this.shot = new shot_model_1.Shot(0, '', '', {}, {}, {}, 0, 0, 0);
         this.route.params.forEach((params) => {
             let id = +params['id'];
             this.shotService.getShot(id)
                 .then((shot) => {
                 this.shot = shot;
-                console.log(shot);
             });
         });
     }

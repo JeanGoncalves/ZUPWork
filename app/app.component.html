@@ -9,7 +9,7 @@
 					ZUP Test
 				</h1>
 			</div>
-			<a class="nav-item">
+			<a class="nav-item" [routerLink]="['/shots']">
 				Shot
 			</a>
         </div>
@@ -20,20 +20,9 @@
           <span></span>
         </span>
 
-        <div class="nav-right nav-menu">
-          <a class="nav-item">
-            <div class="field">
-              <p class="control has-icon">
-                <input class="input" type="text">
-                <span class="icon is-small">
-                  <i class="fa fa-search"></i>
-                </span>
-              </p>
-            </div>
-          </a>
-        </div>
     </header>
   </div>
+</section>
 
 <section class="section has-text-centered">
   <router-outlet></router-outlet>
