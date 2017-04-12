@@ -1,17 +1,41 @@
-<section class="hero is-primary">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        ZUP
-      </h1>
-      <h2 class="subtitle">
-        Application Test
-      </h2>
-    </div>
-  </div>
-</section>
+<section class="hero is-black is-medium">
+  <!-- Hero header: will stick at the top -->
+  <div class="hero-head">
+    <header class="nav">
 
-<section class="section">
+        <div class="nav-left">
+			<div class="nav-item">
+				<h1 class="title">
+					ZUP Test
+				</h1>
+			</div>
+			<a class="nav-item">
+				Shot
+			</a>
+        </div>
+
+        <span class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+
+        <div class="nav-right nav-menu">
+          <a class="nav-item">
+            <div class="field">
+              <p class="control has-icon">
+                <input class="input" type="text">
+                <span class="icon is-small">
+                  <i class="fa fa-search"></i>
+                </span>
+              </p>
+            </div>
+          </a>
+        </div>
+    </header>
+  </div>
+
+<section class="section has-text-centered">
   <router-outlet></router-outlet>
 </section>
 

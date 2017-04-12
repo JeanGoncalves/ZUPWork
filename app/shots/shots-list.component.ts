@@ -10,8 +10,15 @@ import { ShotItemComponent } from "./shot-item.component";
 })
 export class ShotsListComponent implements OnInit {
 
-    shots: {};
+    shots: Object;
     find: string = '';
+    page: number = 1;
+    btnMoreClass: Object = {
+        'button': true,
+        'is-success': true,
+        'is-loading': false
+    };
+
     columnClass = {
         'column': true,
         'is-one-quarter': true,
@@ -24,7 +31,7 @@ export class ShotsListComponent implements OnInit {
 
     ngOnInit() {
         this.shotService.findAll()
-            .then(shots => {
+            .then((shots: Object) => {
                 this.shots = shots;
             });
     }
@@ -34,6 +41,17 @@ export class ShotsListComponent implements OnInit {
             'row': true,
             'col-sm-4': true
         };
+    }
+
+    getMore(): void {
+        this.page++;
+        this.btnMoreClass['is-loading'] = true;
+        this.shotService.getMore(this.page)
+            .then((shots: Object) => {
+                var resp = Array().concat(this.shots);
+                this.shots = resp.concat(shots);
+                this.btnMoreClass['is-loading'] = false;
+            });
     }
 
     search(input: string): void {

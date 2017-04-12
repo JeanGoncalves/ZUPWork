@@ -31,6 +31,12 @@ let ShotService = class ShotService {
             .then(response => response.json())
             .catch(this.handleError);
     }
+    getMore(page) {
+        return this.http.get(this.dribbbleUrl, { headers: this.headers, params: 'page=' + page + '&per_page=12' })
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.handleError);
+    }
     getShot(id) {
         return this.http.get(this.dribbbleUrl + id, { headers: this.headers })
             .toPromise()

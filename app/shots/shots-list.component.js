@@ -14,6 +14,12 @@ let ShotsListComponent = class ShotsListComponent {
     constructor(shotService) {
         this.shotService = shotService;
         this.find = '';
+        this.page = 1;
+        this.btnMoreClass = {
+            'button': true,
+            'is-success': true,
+            'is-loading': false
+        };
         this.columnClass = {
             'column': true,
             'is-one-quarter': true,
@@ -22,7 +28,7 @@ let ShotsListComponent = class ShotsListComponent {
     }
     ngOnInit() {
         this.shotService.findAll()
-            .then(shots => {
+            .then((shots) => {
             this.shots = shots;
         });
     }
@@ -31,6 +37,16 @@ let ShotsListComponent = class ShotsListComponent {
             'row': true,
             'col-sm-4': true
         };
+    }
+    getMore() {
+        this.page++;
+        this.btnMoreClass['is-loading'] = true;
+        this.shotService.getMore(this.page)
+            .then((shots) => {
+            var resp = Array().concat(this.shots);
+            this.shots = resp.concat(shots);
+            this.btnMoreClass['is-loading'] = false;
+        });
     }
     search(input) {
         this.find = input;
