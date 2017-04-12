@@ -1,6 +1,6 @@
 <div class="container">
   
-    <div class="field is-horizontal">
+    <div class="field is-horizontal is-group">
       <div class="field-body">
         <div class="field has-addons has-addons-left">
             <p class="control">
@@ -19,11 +19,15 @@
             </p>
         </div>
         <div class="field has-addons has-addons-right">
-          <p class="control has-icon">
+          <p class="control is-expanded">
             <input class="input" type="text" [ngModel]="busca" (ngModelChange)="search($event)">
-            <span class="icon is-small">
-              <i class="fa fa-search"></i>
-            </span>
+          </p>
+          <p class="control">
+            <a class="button">
+              <span class="icon is-small">
+                <i class="fa fa-search"></i>
+              </span>
+            </a>
           </p>
         </div>
       </div>
@@ -34,6 +38,12 @@
             <a [routerLink]="['/shots/', shot.id]" [hidden]="search(shot)">
               <shot-item [shotItem]="shot"></shot-item>
             </a>
+        </div>
+    </div>
+
+    <div class="section" *ngIf="shots === undefined">
+        <div class="notification">
+          Carregando a lista de <strong>Shots</strong>...
         </div>
     </div>
     

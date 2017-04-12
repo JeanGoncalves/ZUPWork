@@ -22,13 +22,6 @@ export class ShotService {
             .catch(this.handleError);
     }
 
-    find(input: string): Promise<any> {
-        return this.http.get(this.dribbbleUrl, {headers: this.headers})
-            .toPromise()
-            .then(response => response.json())
-            .catch(this.handleError);
-    }
-
     getMore(page: number): Promise<any> {
         return this.http.get(this.dribbbleUrl,{headers: this.headers, params: 'page=' + page + '&per_page=12'})
             .toPromise()
