@@ -1,30 +1,119 @@
 <div class="container">
 
-    <div class="card" style="width: 30rem">
-        <div class="card-header">
-            <div class="card-header-title">{{shot.title}}</div>
-            <label>
-            {{shot.description}}
-            </label>
-        </div>
-        <div class="card-image">
-            <figure class="image is-4by3">
-                <img src="{{shot.images.hidpi}}" alt="Image">
-            </figure>
-        </div>
-        <div class="card-content">
-            <div class="media">
-            <div class="media-left">
-                <figure class="image is-48x48">
-                <img src="{{shot.user.avatar_url}}" alt="Image">
-                </figure>
+    <div class="columns">
+        <div class="column">
+
+            <div class="card" style="width: 30rem">
+                <div class="card-header">
+                    <div class="card-header-title">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                <img src="{{shot.user.avatar_url}}" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4">{{shot.user.name}}</p>
+                                <p class="subtitle is-6">@{{shot.user.username}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="{{shot.images.hidpi}}" alt="Image">
+                    </figure>
+                </div>
             </div>
-            <div class="media-content">
-                <p class="title is-4">{{shot.user.name}}</p>
-                <p class="subtitle is-6">@{{shot.user.username}}</p>
-            </div>
+    
+        </div>
+        <div class="column">
+            <div class="content">
+                <table lass="table">
+                    <tbody>
+                    <tr>
+                        <td width="25%">
+                            <nav class="level is-mobile">
+                                <div class="level-left">
+                                    <a class="level-item">
+                                        <span class="icon is-small"><i class="fa fa-font"></i></span>
+                                        <label> Título</label>
+                                    </a>
+                                </div>
+                            </nav>
+                        </td>
+                        <td>{{shot.title}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <nav class="level is-mobile">
+                                <div class="level-left">
+                                    <a class="level-item">
+                                        <span class="icon is-small"><i class="fa fa-heart"></i></span>
+                                        <label> Curtiu?</label>
+                                    </a>
+                                </div>
+                            </nav>
+                        </td>
+                        <td align="right">{{shot.likes_count}} likes</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <nav class="level is-mobile">
+                                <div class="level-left">
+                                    <a class="level-item">
+                                        <span class="icon is-small"><i class="fa fa-share"></i></span>
+                                        <label> Share</label>
+                                    </a>
+                                </div>
+                            </nav>
+                        </td>
+                        <td align="right">{{shot.views_count}} views</td>
+                    </tr>
+                    <tr *ngIf="shot.buckets_count > 0">
+                        <td>
+                            <nav class="level is-mobile">
+                                <div class="level-left">
+                                    <a class="level-item">
+                                        <span class="icon is-small"><i class="fa fa-bitbucket"></i></span>
+                                        <label> Bucket</label>
+                                    </a>
+                                </div>
+                            </nav>
+                        </td>
+                        <td align="right">{{shot.buckets_count}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <nav class="level is-mobile">
+                                <div class="level-left">
+                                    <a class="level-item">
+                                        <span class="icon is-small"><i class="fa fa-tags"></i></span>
+                                        <label> Tags</label>
+                                    </a>
+                                </div>
+                            </nav>
+                            <span class="tag" *ngFor="let tag of shot.tags">
+                                {{tag}} 
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">                            
+                            <nav class="level is-mobile">
+                                <div class="level-left">
+                                    <a class="level-item">
+                                        <span class="icon is-small"><i class="fa fa-file-text-o"></i></span>
+                                        <label> Descrição</label>
+                                    </a>
+                                </div>
+                            </nav>
+                            <label [innerHTML]="shot.description"></label>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-    
 </div>
