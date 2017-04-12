@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { ShotsListComponent } from './shots-list.component';
 import { ShotDetailComponent } from './shot-detail.component';
+import { NotFoundComponent } from './../not-found.component';
 
 
 const shotRoutes: Routes = [
@@ -13,6 +14,10 @@ const shotRoutes: Routes = [
     {
         path: 'shots/:id',
         component: ShotDetailComponent
+    },
+    {
+        path: '**',
+        component: NotFoundComponent
     }
 ];
 

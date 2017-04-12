@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 const core_1 = require("@angular/core");
 const common_1 = require("@angular/common");
 const forms_1 = require("@angular/forms");
+const not_found_component_1 = require("./../not-found.component");
 const shot_detail_component_1 = require("./shot-detail.component");
 const shots_list_component_1 = require("./shots-list.component");
 const shot_item_component_1 = require("./shot-item.component");
@@ -23,11 +24,13 @@ ShotsModule = __decorate([
             shot_routing_module_1.ShotRoutingModule
         ],
         declarations: [
+            not_found_component_1.NotFoundComponent,
             shot_detail_component_1.ShotDetailComponent,
             shots_list_component_1.ShotsListComponent,
             shot_item_component_1.ShotItemComponent
         ],
         exports: [
+            not_found_component_1.NotFoundComponent,
             shots_list_component_1.ShotsListComponent,
             shot_item_component_1.ShotItemComponent
         ],
