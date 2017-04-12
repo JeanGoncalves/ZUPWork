@@ -1,14 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, Output, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 
 import { ShotService } from "./shot.service";
 import { ShotItemComponent } from "./shot-item.component";
+
+import { Subject } from "rxjs/Subject";
 
 @Component({
     moduleId: module.id,
     selector: 'shots-list',
     templateUrl: 'shots-list.component.html'
 })
-export class ShotsListComponent implements OnInit {
+export class ShotsListComponent implements OnInit, OnChanges {
+
+    @Input() busca: string;
+    @Output() buscaChange: EventEmitter<string> = new EventEmitter<string>();
+    private termosDaBusca: Subject<string> = new Subject<string>();
 
     shots: {};
     find: string = '';
@@ -36,6 +42,11 @@ export class ShotsListComponent implements OnInit {
             });
     }
 
+    ngOnChanges(changes: SimpleChanges): void {
+        let busca: SimpleChange = changes['busca'];
+        this.search(busca.currentValue);
+    }
+
     getListClass(): {} {
         return {
             'row': true,
@@ -54,22 +65,13 @@ export class ShotsListComponent implements OnInit {
             });
     }
 
-    search(input: string): void {
-        this.find = input;
-        this.shots = {};
-        this.shotService.find(input)
-            .then(shots => {
-                this.shots = shots;
-            });
+    search(term: string): void {
+        this.termosDaBusca.next(term);
+        this.buscaChange.emit(term);
     }
 
     changeSize(size: string): void {
-        if (size) {
-            this.columnClass['is-one-quarter'] = false;
-            this.columnClass['is-one-third'] = true;
-        } else {
-            this.columnClass['is-one-quarter'] = true;
-            this.columnClass['is-one-third'] = false;
-        }
+        this.columnClass['is-one-quarter'] = Boolean(!size);
+        this.columnClass['is-one-third'] = Boolean(size);
     }
 }

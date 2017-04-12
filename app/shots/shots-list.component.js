@@ -10,9 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require("@angular/core");
 const shot_service_1 = require("./shot.service");
+const Subject_1 = require("rxjs/Subject");
 let ShotsListComponent = class ShotsListComponent {
     constructor(shotService) {
         this.shotService = shotService;
+        this.buscaChange = new core_1.EventEmitter();
+        this.termosDaBusca = new Subject_1.Subject();
         this.find = '';
         this.page = 1;
         this.btnMoreClass = {
@@ -32,6 +35,10 @@ let ShotsListComponent = class ShotsListComponent {
             this.shots = shots;
         });
     }
+    ngOnChanges(changes) {
+        let busca = changes['busca'];
+        this.search(busca.currentValue);
+    }
     getListClass() {
         return {
             'row': true,
@@ -48,25 +55,23 @@ let ShotsListComponent = class ShotsListComponent {
             this.btnMoreClass['is-loading'] = false;
         });
     }
-    search(input) {
-        this.find = input;
-        this.shots = {};
-        this.shotService.find(input)
-            .then(shots => {
-            this.shots = shots;
-        });
+    search(term) {
+        this.termosDaBusca.next(term);
+        this.buscaChange.emit(term);
     }
     changeSize(size) {
-        if (size) {
-            this.columnClass['is-one-quarter'] = false;
-            this.columnClass['is-one-third'] = true;
-        }
-        else {
-            this.columnClass['is-one-quarter'] = true;
-            this.columnClass['is-one-third'] = false;
-        }
+        this.columnClass['is-one-quarter'] = Boolean(!size);
+        this.columnClass['is-one-third'] = Boolean(size);
     }
 };
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], ShotsListComponent.prototype, "busca", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], ShotsListComponent.prototype, "buscaChange", void 0);
 ShotsListComponent = __decorate([
     core_1.Component({
         moduleId: module.id,

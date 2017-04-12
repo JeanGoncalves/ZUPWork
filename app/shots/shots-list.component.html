@@ -20,7 +20,7 @@
         </div>
         <div class="field has-addons has-addons-right">
           <p class="control has-icon">
-            <input class="input" type="text">
+            <input class="input" type="text" [ngModel]="busca" (ngModelChange)="search($event)">
             <span class="icon is-small">
               <i class="fa fa-search"></i>
             </span>
@@ -29,9 +29,9 @@
       </div>
     </div>
   
-    <div class="columns is-multiline">
+    <div class="columns is-multiline is-mobile">
         <div [ngClass]="columnClass" *ngFor="let shot of shots">
-            <a [routerLink]="['/shots/', shot.id]">
+            <a [routerLink]="['/shots/', shot.id]" [hidden]="search(shot)">
               <shot-item [shotItem]="shot"></shot-item>
             </a>
         </div>
