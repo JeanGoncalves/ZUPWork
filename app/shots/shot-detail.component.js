@@ -10,14 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require("@angular/core");
 const router_1 = require("@angular/router");
-const common_1 = require("@angular/common");
 const shot_service_1 = require("./shot.service");
 const shot_model_1 = require("./shot.model");
 let ShotDetailComponent = class ShotDetailComponent {
-    constructor(shotService, route, location) {
+    constructor(shotService, route) {
         this.shotService = shotService;
         this.route = route;
-        this.location = location;
     }
     ngOnInit() {
         this.shot = new shot_model_1.Shot(0, '', '', {}, {}, {}, 0, 0, 0);
@@ -37,8 +35,7 @@ ShotDetailComponent = __decorate([
         templateUrl: './shot-detail.component.html'
     }),
     __metadata("design:paramtypes", [shot_service_1.ShotService,
-        router_1.ActivatedRoute,
-        common_1.Location])
+        router_1.ActivatedRoute])
 ], ShotDetailComponent);
 exports.ShotDetailComponent = ShotDetailComponent;
 //# sourceMappingURL=shot-detail.component.js.map

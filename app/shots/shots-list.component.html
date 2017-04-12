@@ -47,7 +47,7 @@
         </div>
     </div>
     
-    <section class="section">
+    <section class="section" *ngIf="shots !== undefined">
       <button [ngClass]="btnMoreClass" (click)="getMore()">
         Carregar mais
       </button>

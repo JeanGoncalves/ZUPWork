@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from "@angular/router";
-import { Location } from '@angular/common';
 
 import { ShotService } from "./shot.service";
 import { Shot } from "./shot.model";
@@ -16,8 +15,7 @@ export class ShotDetailComponent implements OnInit {
     
     constructor(
         private shotService: ShotService,
-        private route: ActivatedRoute,
-        private location: Location
+        private route: ActivatedRoute
     ) { }
 
     ngOnInit(): void {
