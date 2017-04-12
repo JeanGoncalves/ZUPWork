@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from "@angular/router";
 import { Location } from '@angular/common';
 
 import { ShotService } from "./shot.service";
+import { Shot } from "./shot.model";
 
 @Component({
     moduleId: module.id,
@@ -11,7 +12,7 @@ import { ShotService } from "./shot.service";
 })
 export class ShotDetailComponent implements OnInit {
 
-    shot: {};
+    shot: Shot;
     
     constructor(
         private shotService: ShotService,
@@ -20,14 +21,15 @@ export class ShotDetailComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+        this.shot = new Shot('', '', {}, 0, 0, '', {}, 0);
 
         this.route.params.forEach((params: Params) => {
             let id: number = +params['id'];
 
             this.shotService.getShot(id)
-                .then(response => {
-                    this.shot = response;
-                    console.log(response);
+                .then((shot: Shot) => {
+                    this.shot = shot;
+                    console.log(shot);
                 });
 
         })

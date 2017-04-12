@@ -49,7 +49,9 @@
 
     <div class="columns is-multiline">
         <div [ngClass]="columnClass" *ngFor="let shot of shots">
-            <shot-item [shotItem]="shot"></shot-item>
+            <a [routerLink]="['/shots/', shot.id]">
+              <shot-item [shotItem]="shot"></shot-item>
+            </a>
         </div>
     </div>
 
