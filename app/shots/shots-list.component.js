@@ -10,12 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require("@angular/core");
 const shot_service_1 = require("./shot.service");
-const Subject_1 = require("rxjs/Subject");
 let ShotsListComponent = class ShotsListComponent {
     constructor(shotService) {
         this.shotService = shotService;
-        this.buscaChange = new core_1.EventEmitter();
-        this.termosDaBusca = new Subject_1.Subject();
         this.find = '';
         this.page = 1;
         this.btnMoreClass = {
@@ -28,23 +25,24 @@ let ShotsListComponent = class ShotsListComponent {
             'is-one-quarter': true,
             'is-one-third': false
         };
+        this.modalClass = {
+            'modal': true,
+            'is-active': false
+        };
     }
+    /**
+     * Method for initialize the component
+     */
     ngOnInit() {
         this.shotService.findAll()
             .then((shots) => {
             this.shots = shots;
         });
     }
-    ngOnChanges(changes) {
-        let busca = changes['busca'];
-        this.search(busca.currentValue);
-    }
-    getListClass() {
-        return {
-            'row': true,
-            'col-sm-4': true
-        };
-    }
+    /**
+     * Method for button get more shots in list
+     * @author Jean Gonçalves
+     */
     getMore() {
         this.page++;
         this.btnMoreClass['is-loading'] = true;
@@ -55,23 +53,48 @@ let ShotsListComponent = class ShotsListComponent {
             this.btnMoreClass['is-loading'] = false;
         });
     }
-    search(term) {
-        this.termosDaBusca.next(term);
-        this.buscaChange.emit(term);
+    /**
+     * The route for search is not implement in Dribbble or not available
+     * @param Object
+     * @author Jean Gonçalves
+     */
+    /* search(input): void {
+        this.shotService.find(input.value)
+            .then((shots: Object) => {
+                this.shots = shots;
+            })
+            .catch(err => console.log('catch', err));
+    } */
+    /**
+     * Method for Opem modal :)
+     * @type any Html Element for search
+     * @author Jean Gonçalves
+     */
+    search(input) {
+        this.searchAny = input.value;
+        this.modalClass['is-active'] = true;
     }
+    /**
+     * Method for button change size shots
+     * @type boolean
+     * @author Jean Gonçalves
+     */
     changeSize(size) {
-        this.columnClass['is-one-quarter'] = Boolean(!size);
-        this.columnClass['is-one-third'] = Boolean(size);
+        this.columnClass['is-one-quarter'] = !size;
+        this.columnClass['is-one-third'] = size;
+    }
+    /**
+     * Close Modal
+     * @author Jean Gonçalves
+     */
+    closeModal() {
+        this.modalClass['is-active'] = false;
     }
 };
 __decorate([
     core_1.Input(),
     __metadata("design:type", String)
-], ShotsListComponent.prototype, "busca", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", core_1.EventEmitter)
-], ShotsListComponent.prototype, "buscaChange", void 0);
+], ShotsListComponent.prototype, "searchAny", void 0);
 ShotsListComponent = __decorate([
     core_1.Component({
         moduleId: module.id,

@@ -17,6 +17,9 @@ let ShotDetailComponent = class ShotDetailComponent {
         this.shotService = shotService;
         this.route = route;
     }
+    /**
+     * Method for initialize the component
+     */
     ngOnInit() {
         this.shot = new shot_model_1.Shot(0, '', '', {}, {}, {}, 0, 0, 0);
         this.route.params.forEach((params) => {

@@ -20,10 +20,10 @@
         </div>
         <div class="field has-addons has-addons-right">
           <p class="control is-expanded">
-            <input class="input" type="text" [ngModel]="busca" (ngModelChange)="search($event)">
+            <input class="input" type="text" #searchInput>
           </p>
           <p class="control">
-            <a class="button">
+            <a class="button" (click)="search(searchInput)">
               <span class="icon is-small">
                 <i class="fa fa-search"></i>
               </span>
@@ -35,7 +35,7 @@
   
     <div class="columns is-multiline is-mobile">
         <div [ngClass]="columnClass" *ngFor="let shot of shots">
-            <a [routerLink]="['/shots/', shot.id]" [hidden]="search(shot)">
+            <a [routerLink]="['/shots/', shot.id]">
               <shot-item [shotItem]="shot"></shot-item>
             </a>
         </div>
@@ -52,4 +52,41 @@
         Carregar mais
       </button>
     </section>
+</div>
+
+<div [ngClass]="modalClass">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box">
+      <article class="media">
+        <div class="media-left">
+          <figure class="image is-64x64">
+            <img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAe2AAAAJDFjZmY3Mjc0LWM0YjQtNGM0MC1iZTVjLTI3MzE4MmY2NTYzYg.jpg" alt="Image">
+          </figure>
+        </div>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>Jean Gonçalves</strong>
+              <small>
+                <a href="https://www.linkedin.com/in/jeangoncalves/">jeangoncalves</a>
+              </small>
+              <br>
+              <span>
+                Me Desculpe, mas a busca vai ficar para uma próxima, pois procurei por toda a documentação do Dribbble e não tinha nenhuma rota para efetuar uma busca.
+              </span>
+                <br><br>
+                <span>
+                  Mas não vou te deixar na mão, 
+                  <a target="_blanq" href="https://dribbble.com/search?q={{searchAny}}">clique aqui</a>
+                  que você vai achar o que está querendo ;)
+                </span>
+            </p>
+            <blockquote>Obrigado pela oportunidade de participar do processo.</blockquote>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+  <button class="modal-close" (click)="closeModal()"></button>
 </div>

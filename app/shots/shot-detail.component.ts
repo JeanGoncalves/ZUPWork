@@ -18,6 +18,9 @@ export class ShotDetailComponent implements OnInit {
         private route: ActivatedRoute
     ) { }
 
+    /**
+     * Method for initialize the component
+     */
     ngOnInit(): void {
         this.shot = new Shot(0, '', '', {}, {}, {}, 0, 0, 0);
 

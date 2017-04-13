@@ -10,8 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require("@angular/core");
 let ShotItemComponent = class ShotItemComponent {
-    constructor() { }
-    ngOnInit() { }
 };
 __decorate([
     core_1.Input(),
@@ -22,8 +20,7 @@ ShotItemComponent = __decorate([
         moduleId: module.id,
         selector: 'shot-item',
         templateUrl: './shot-item.component.html'
-    }),
-    __metadata("design:paramtypes", [])
+    })
 ], ShotItemComponent);
 exports.ShotItemComponent = ShotItemComponent;
 //# sourceMappingURL=shot-item.component.js.map

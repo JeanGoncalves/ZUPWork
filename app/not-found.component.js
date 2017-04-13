@@ -14,7 +14,10 @@ let NotFoundComponent = class NotFoundComponent {
     constructor(location) {
         this.location = location;
     }
-    ngOnInit() { }
+    /**
+     * Method for back history navigator
+     * @author Jean Gonçalves
+     */
     goBack() {
         this.location.back();
     }

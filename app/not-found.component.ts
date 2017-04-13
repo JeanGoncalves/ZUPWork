@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 
 @Component({
@@ -6,13 +6,16 @@ import { Location } from '@angular/common';
     selector: 'not-found',
     templateUrl: './not-found.component.html'
 })
-export class NotFoundComponent implements OnInit {
+export class NotFoundComponent {
+
     constructor(
         private location: Location
     ) { }
 
-    ngOnInit() { }
-
+    /**
+     * Method for back history navigator
+     * @author Jean Gonçalves
+     */
     goBack(): void {
         this.location.back();
     }
